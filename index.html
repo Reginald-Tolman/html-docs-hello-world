@@ -1,21 +1,282 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mason & Celina</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <title>Move your hips tom tom</title>
-    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
-  </head>
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
 
-  <body>
-    <div class="navbar-wrapper">
-      <div class="container">
-          <h1> &lt;3 </h1><br>
-      </div>
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 90%;
+            padding: 60px;
+            text-align: center;
+            position: relative;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .decorative-line {
+            width: 100px;
+            height: 2px;
+            background: #764ba2;
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .decorative-line::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, #fff, transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-weight: normal;
+            letter-spacing: 3px;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #718096;
+            margin-bottom: 30px;
+            font-style: italic;
+            animation: fadeIn 1.8s ease-out;
+        }
+
+        .date {
+            font-size: 2.5em;
+            color: #764ba2;
+            margin: 30px 0;
+            font-weight: bold;
+            animation: pulseIn 2s ease-out;
+        }
+
+        @keyframes pulseIn {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .location {
+            font-size: 1.3em;
+            color: #4a5568;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .save-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            display: inline-block;
+            font-size: 1.1em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            box-shadow: 0 10px 30px rgba(118, 75, 162, 0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: rgba(118, 75, 162, 0.3);
+            animation: floatHeart 10s linear infinite;
+        }
+
+        @keyframes floatHeart {
+            0% {
+                bottom: -10%;
+                transform: translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                bottom: 110%;
+                transform: translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .heart:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 12s; }
+        .heart:nth-child(2) { left: 20%; animation-delay: 2s; animation-duration: 15s; }
+        .heart:nth-child(3) { left: 35%; animation-delay: 4s; animation-duration: 13s; }
+        .heart:nth-child(4) { left: 50%; animation-delay: 1s; animation-duration: 11s; }
+        .heart:nth-child(5) { left: 65%; animation-delay: 3s; animation-duration: 14s; }
+        .heart:nth-child(6) { left: 80%; animation-delay: 5s; animation-duration: 16s; }
+        .heart:nth-child(7) { left: 90%; animation-delay: 2.5s; animation-duration: 12s; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 40px 30px;
+            }
+            
+            h1 {
+                font-size: 2.2em;
+            }
+            
+            .date {
+                font-size: 2em;
+            }
+            
+            .location {
+                font-size: 1.1em;
+            }
+        }
+
+        .flourish {
+            font-size: 2em;
+            color: #764ba2;
+            margin: 20px 0;
+            animation: spin 10s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts">
+        <span class="heart">❤</span>
+        <span class="heart">❤</span>
+        <span class="heart">❤</span>
+        <span class="heart">❤</span>
+        <span class="heart">❤</span>
+        <span class="heart">❤</span>
+        <span class="heart">❤</span>
     </div>
-  </body>
+    
+    <div class="container">
+        <div class="subtitle">You're Invited to Celebrate</div>
+        <h1>Mason & Celina</h1>
+        <div class="decorative-line"></div>
+        
+        <div class="date">March 13, 2027</div>
+        
+        <div class="location">
+            Mason Mill<br>
+            40 Masonmill Road<br>
+            Carmel, Western Australia
+        </div>
+        
+        <div class="save-text">Save the Date</div>
+        
+        <div class="decorative-line"></div>
+        
+        <div class="subtitle" style="margin-top: 30px; font-size: 1em;">
+            Formal invitation to follow
+        </div>
+    </div>
+
+    <script>
+        // Add some interactive sparkle on mouse move
+        document.addEventListener('mousemove', (e) => {
+            if (Math.random() > 0.98) {
+                const sparkle = document.createElement('div');
+                sparkle.style.position = 'fixed';
+                sparkle.style.left = e.clientX + 'px';
+                sparkle.style.top = e.clientY + 'px';
+                sparkle.style.width = '4px';
+                sparkle.style.height = '4px';
+                sparkle.style.backgroundColor = '#764ba2';
+                sparkle.style.borderRadius = '50%';
+                sparkle.style.pointerEvents = 'none';
+                sparkle.style.animation = 'sparkleOut 1s ease-out forwards';
+                document.body.appendChild(sparkle);
+                
+                setTimeout(() => sparkle.remove(), 1000);
+            }
+        });
+        
+        // Add sparkle animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes sparkleOut {
+                0% {
+                    transform: scale(0) rotate(0deg);
+                    opacity: 1;
+                }
+                100% {
+                    transform: scale(2) rotate(180deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
 </html>
