@@ -266,6 +266,7 @@
         </div>
         
         <div class="save-text" id="openPhotoBtn" style="cursor:pointer;">Save the Date</div>
+        <a id="calendarLink" style="display:none;"></a>
         
         <div id="photoModal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7); z-index:1000; align-items:center; justify-content:center;">
             <div id="modalContent" style="position:relative; max-width:90vw; max-height:90vh; display:flex; align-items:center; justify-content:center; transform:translateY(100px); opacity:0; animation:none;">
@@ -318,7 +319,23 @@
         `;
         document.head.appendChild(style);
 
+        function createCalendarInvite() {
+            const title = 'Mason & Celina Wedding'
+            const location = 'Perth';
+            const details = 'You are invited to celebrate Mason & Celina!';
+            const startDate = '20270313';
+            const endDate = '20270313';
+            const icsContent = `BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:${title}\nLOCATION:${location}\nDESCRIPTION:${details}\nDTSTART:${startDate}\nDTEND:${endDate}\nEND:VEVENT\nEND:VCALENDAR`;
+            const blob = new Blob([icsContent.replace(/\n/g, '\r\n')], { type: 'text/calendar' });
+            const url = URL.createObjectURL(blob);
+            const link = document.getElementById('calendarLink');
+            link.href = url;
+            link.download = 'save-the-date.ics';
+            link.click();
+        }
+
         document.getElementById('openPhotoBtn').addEventListener('click', function() {
+            createCalendarInvite();
             document.getElementById('photoModal').style.display = 'flex';
             var modalContent = document.getElementById('modalContent');
             modalContent.style.animation = 'modalFloatUp 0.6s cubic-bezier(.42,0,.58,1) forwards';
@@ -342,3 +359,4 @@
     </script>
 </body>
 </html>
+``` 
